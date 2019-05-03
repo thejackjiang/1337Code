@@ -24,17 +24,21 @@
  */
 
 function skylineReshaper(masterArray) {
-    const len = masterArray.length;
-    const x_max = x_determineMax(masterArray, len);
-    const y_max = y_determineMax(masterArray, len);
+    const x_length = masterArray[0].length;
+    const y_length = master.length;
+		
+    const x_max = x_determineMax(masterArray, x_length);
+    const y_max = y_determineMax(masterArray, y_length);
+
+    let totalCount = 0;
 
     for (let i = 0; i < len; i++) {
         for(let j = 0; j < len; j++) {
-            const lesserMaxVal = lesserValue(x_max[j], y_max[i]);
-            masterArray[i][j] = abs(masterArray[i][j] - lesserMaxVal);
+            const lesserMaxVal = x_max[j] < y_max[i] ? y_max[i] : x_max[j];
+            counter += lesserMaxVal - masterArray[i][j];
         }
     }
-    return totalSum(masterArray, len);
+    return counter;
 }
 
 function y_determineMax(masterArray, len) {
@@ -49,6 +53,7 @@ function y_determineMax(masterArray, len) {
     return array;
 }
 
+// alternatively you could flip the master array i,j before passing it in.
 function x_determineMax(masterArray, len) {
     const array = [];
     for (let i = 0; i < len; i++){
@@ -60,33 +65,6 @@ function x_determineMax(masterArray, len) {
     }
     return array;
 }
-
-function lesserValue(x, y) {
-    if (x <= y) {
-        return x;
-    } else {
-        return y;
-    }
-}
-
-function totalSum(masterArray, len) {
-    let total = 0;
-    for (let i = 0; i < len; i++) {
-        for (let j = 0; j < len; j++) {
-            total += masterArray[i][j];
-        }
-    }
-    return total;
-}
-
-function abs(num) {
-    if (num < 0) {
-        return -num;
-    } else {
-        return num;
-    }
-}
-
 
 const masterArray = [
    [1, 2, 6, 4],
