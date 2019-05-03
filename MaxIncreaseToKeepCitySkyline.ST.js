@@ -13,7 +13,7 @@ const maxIncreaseKeepingSkyline = function(masterArray) {
 
     for (let i = 0; i < x_len; i++) {
         for(let j = 0; j < y_len; j++) {
-            const lesserMaxVal = x_max[j] < y_max[i] ? y_max[i] : x_max[j];
+            const lesserMaxVal = x_max[j] < y_max[i] ? x_max[j] : y_max[i];
             totalCount += lesserMaxVal - masterArray[i][j];
         }
     }
