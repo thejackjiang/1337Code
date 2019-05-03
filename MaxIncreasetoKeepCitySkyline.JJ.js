@@ -20,11 +20,12 @@ const city = [
 function keepSkyline(city) {
 	let counter = 0
 	const verticals = createVerticalArray(city)
+	const verticalMax = verticals.map((element) => findMax(element))
 
-	for(let i = 0; i < city.length; i ++){			// i is x, j is y
+	for(let i = 0; i < city.length; i ++){
+		const xMax = findMax(city[i])
 		for(let j = 0; j < city[0].length; j++){
-			const xMax = findMax(city[i])
-			const yMax = findMax(verticals[j])
+			const yMax =  verticalMax[j]
 			const max = xMax > yMax ? yMax : xMax
 			const increaseBy = max - city[i][j]
 			counter += increaseBy
