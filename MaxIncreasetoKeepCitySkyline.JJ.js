@@ -1,4 +1,4 @@
-/* 
+/*
 In a 2 dimensional array grid, each value grid[i][j] represents the height of a building located there. We are allowed to increase the height of any number of buildings, by any amount (the amounts can be different for different buildings). Height 0 is considered to be a building as well. 
 
 At the end, the "skyline" when viewed from all four directions of the grid, i.e. top, bottom, left, and right, must be the same as the skyline of the original grid. A city's skyline is the outer contour of the rectangles formed by all the buildings when viewed from a distance. See the following example.
@@ -19,13 +19,12 @@ const city = [
 
 function keepSkyline(city) {
 	let counter = 0
-	const verticals = createVerticalArray(city)
-	const verticalMax = verticals.map((element) => findMax(element))
+	const verticals = findVerticalMax(city)
 
 	for (let i = 0; i < city.length; i++) {
 		const xMax = findMax(city[i])
 		for (let j = 0; j < city[0].length; j++) {
-			const yMax = verticalMax[j]
+			const yMax = verticals[j]
 			const max = xMax > yMax ? yMax : xMax
 			const increaseBy = max - city[i][j]
 			counter += increaseBy
@@ -34,14 +33,14 @@ function keepSkyline(city) {
 	return counter
 }
 
-function createVerticalArray(city) {
+function findVerticalMax(city) {
 	const results = []
 	for (let i = 0; i < city[0].length; i++) {
 		const array = []
 		for (let j = 0; j < city.length; j++) {
 			array.push(city[j][i])
 		}
-		results.push(array)
+		results.push(findMax(array))
 	}
 	return results
 }
@@ -49,6 +48,7 @@ function createVerticalArray(city) {
 function findMax(array) {
 	return array.reduce((acc, element) => acc > element ? acc : element, -Infinity)
 }
+
 
 const sum = keepSkyline(city)
 
