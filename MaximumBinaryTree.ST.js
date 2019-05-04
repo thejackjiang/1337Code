@@ -20,7 +20,9 @@ Output: return the tree root node representing the following tree:
 */
 
 function constructMaximumBinaryTree(nums) {
-    if (nums.length === 0) return null;
+    if (nums.length === 0) {
+	return null;
+    }
     else if (nums.length === 1) {
         return new TreeNode(nums[0], null, null);
     } else {
