@@ -121,3 +121,8 @@ dailyTemperatures([77,41,41,41,41,77,41,77,77,77])
 // dailyTemperatures([55,38,53,81,61,93,97,32,43,78]);
 // dailyTemperatures([89,62,70,58,47,47,46,76,100,70]);
 // dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73])  
+
+/*
+Runtime: 196 ms, faster than 58.53% of JavaScript online submissions for Daily Temperatures.
+Memory Usage: 47.9 MB, less than 18.18% of JavaScript online submissions for Daily Temperatures.
+*/
